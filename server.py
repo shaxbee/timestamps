@@ -17,16 +17,15 @@ def status():
 @app.route("/set_build_time", methods=['POST'])
 def set_build_time_req():
     global build
-    print("test")
     data = request.get_json(force=True)
-    build = str(data["built_at"])
+    build = data["built_at"]
     return Response("OK", status=200, mimetype='text/plain')
 
 @app.route("/set_deploy_time", methods=['POST'])
 def set_deploy_time_req():
     global deploy
     data = request.get_json(force=True)
-    deploy = str(data["deploy_at"])
+    deploy = data["deployed_at"]
     return Response("OK", status=200, mimetype='text/plain')
 
 @app.route("/")
@@ -40,7 +39,7 @@ def display():
         build = "Build has not started yet"
     if deploy is None:
         deploy = "Deployment has not started yet"
-    display_message = {"hello:": "world", "built_at": f"{build}", "deployed_at:" : f"{deploy}"}
+    display_message = {"hello:": "world", "built_at": build, "deployed_at:" : deploy}
     value =  (json.dumps(display_message, indent=4))
     return Response(value, status=200, mimetype='text/plain')
 
