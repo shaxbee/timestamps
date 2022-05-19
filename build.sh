@@ -2,6 +2,8 @@
 
 eval $(minikube docker-env)
 
-docker build -t timestamps/merishka:latest .
+#docker build -t merishka/timestamps:latest .
 
-env build_time=$(date +%s)
+echo $(date +%s) > data.txt
+
+sh endpoints_build.sh

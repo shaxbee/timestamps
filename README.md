@@ -1,12 +1,14 @@
 # timestamps
 
-A webserver to access time stamps from scripts 
+A webserver to access time stamps from scripts.
 
 To run enter the following:
 ```
+Ensure minikube is running
 $ sh build.sh
 $ sh deploy.sh 
-$ sh endpoint.sh  
+$ sh endpoints_deploy.sh
+Open 127.0.0.1:8000
 ```
 
 ## The API:
@@ -20,7 +22,7 @@ Endpoint:
 Request:
 ```
       {
-      "built_at" : unix_timestamp
+        "built_at" : unix_timestamp
       }
 ```
 
@@ -31,7 +33,7 @@ Endpoint:
 Request:
 ```
       {
-      "deloyed_at" : unix_timestamp
+        "deloyed_at" : unix_timestamp
       }
 ```
 
@@ -41,6 +43,8 @@ Endpoint:
 ```
 /health 
 ```
+Note: This is for adaptability for future k8s usage. Specifically health and liveness probes.  
+
 
 Endpoint:
 ```
